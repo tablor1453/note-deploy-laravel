@@ -1,0 +1,7 @@
+#### Jika dari http ke https ####
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+ if (app()->isProduction()) {
+    ($this->{'app'}['request'] ?? null)?->server?->set('HTTPS','on');
+    \Illuminate\Support\Facades\URL::forceScheme('https');
+}
