@@ -1,0 +1,15 @@
+composer i
+upload build folder
+upload .env
+php artisan optimize:clear
+php artisan storage:link
+
+sudo chown -R $USER:www-data storage
+sudo chown -R $USER:www-data bootstrap/cache
+
+HTTPS Protocol
+**** AppServiceProvider ****
+if (app()->isProduction()) {
+    ($this->{'app'}['request'] ?? null)?->server?->set('HTTPS','on');
+    \Illuminate\Support\Facades\URL::forceScheme('https');
+}
